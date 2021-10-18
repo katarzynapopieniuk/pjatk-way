@@ -84,25 +84,6 @@ public class Sandwich {
         ingredients.remove(ingredient);
     }
 
-    public double getPrice() {
-        return ingredients.stream()
-                .map(Ingredient::getPrice)
-                .reduce(Double::sum)
-                .orElse(0.0);
-    }
-
-    public int getKcal() {
-        return ingredients.stream()
-                .map(Ingredient::getKcal)
-                .reduce(Integer::sum)
-                .orElse(0);
-    }
-
-    public boolean isVegan() {
-        return ingredients.stream()
-                .allMatch(Ingredient::isVegan);
-    }
-
     @Override
     public String toString() {
         return "Sandwich: " + name + ", price: " + basePrice;
