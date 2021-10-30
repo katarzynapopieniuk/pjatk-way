@@ -1,13 +1,20 @@
 package com.way.pjatk.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Sandwich")
 public class Sandwich {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private Integer baseCalories;
     private Double basePrice;
+    @OneToMany
     private List<Ingredient> ingredients;
     private SandwichSize sandwichSize;
 

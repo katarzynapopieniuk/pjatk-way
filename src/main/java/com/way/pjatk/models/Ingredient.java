@@ -1,6 +1,14 @@
 package com.way.pjatk.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Ingredients")
 public class Ingredient {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private Integer calories;
     private Double price;
@@ -9,11 +17,20 @@ public class Ingredient {
     public Ingredient() {
     }
 
-    public Ingredient(String name, Integer calories, Double price, Boolean isVegan) {
+    public Ingredient(Integer id, String name, Integer calories, Double price, Boolean isVegan) {
+        this.id = id;
         this.name = name;
         this.calories = calories;
         this.price = price;
         this.isVegan = isVegan;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
