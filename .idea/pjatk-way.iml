@@ -17,7 +17,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="entityManagerFactory" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -57,10 +59,7 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.53" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.53" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.10" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.10" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.10" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.10" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.5.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-test:2.5.5" level="project" />
@@ -69,7 +68,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.4.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:2.4.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:9.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.19.0" level="project" />
@@ -113,11 +111,16 @@
     <orderEntry type="library" name="Maven: org.glassfish.jaxb:txw2:2.3.5" level="project" />
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.12" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.sun.activation:jakarta.activation:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:2.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:5.3.10" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.10" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.10" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.10" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aspects:5.3.10" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.10" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.9.7" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.h2database:h2:1.4.200" level="project" />
   </component>
 </module>

@@ -1,5 +1,7 @@
 package com.way.pjatk.models;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,7 @@ public class Sandwich {
     private Integer baseCalories;
     private Double basePrice;
     @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Ingredient> ingredients;
     private SandwichSize sandwichSize;
 

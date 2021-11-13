@@ -14,6 +14,9 @@ public class Ingredient {
     private Double price;
     private Boolean isVegan;
 
+    @ManyToOne
+    private Sandwich sandwich;
+
     public Ingredient() {
     }
 

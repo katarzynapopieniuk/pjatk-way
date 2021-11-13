@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/sandwich")
 public class SandwichRestController {
@@ -23,5 +25,15 @@ private final SandwichService sandwichService;
     @GetMapping("/prepare")
     public ResponseEntity<Sandwich> prepareSandwich() {
         return ResponseEntity.ok(sandwichService.getSandwich("Red"));
+    }
+
+    @GetMapping("/addButter")
+    public void addButter() {
+        sandwichService.addButter();
+    }
+
+    @GetMapping("/topFiveSandwiches")
+    public ResponseEntity<Collection<Sandwich>> getTopFiveSandwiches() {
+        return ResponseEntity.ok(sandwichService.getTopFiveSandwiches());
     }
 }
