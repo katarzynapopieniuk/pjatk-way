@@ -9,6 +9,9 @@ public enum SandwichSize {
     }
 
     public SandwichSize previous() {
-        return values()[(this.ordinal()-1)];
+        if(this.ordinal()-1 >= 0) {
+            return values()[(this.ordinal() - 1)];
+        }
+        return SandwichSize.SMALL;
     }
 }

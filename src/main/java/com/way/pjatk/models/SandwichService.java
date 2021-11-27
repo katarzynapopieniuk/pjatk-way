@@ -73,14 +73,22 @@ public class SandwichService {
     public void setSmallerSize(Sandwich sandwich) {
         Optional.ofNullable(sandwich.getSandwichSize())
                 .filter(size -> !size.equals(SandwichSize.SMALL))
-                .map(SandwichSize::next)
+                .map(SandwichSize::previous)
                 .ifPresent(sandwich::setSandwichSize);
     }
 
-    public void setNewPriceIfIsMoreExpensive(Sandwich sandwich, Double newPrice) {
+    public void setNewPriceIfCurrentIsMoreExpensive(Sandwich sandwich, Double newPrice) {
         Optional.ofNullable(sandwich.getBasePrice())
                 .filter(price -> price > newPrice)
-                .ifPresent(sandwich::setBasePrice);
+                .ifPresent(price -> sandwich.setBasePrice(newPrice));
+    }
+
+    public Double getFinalPrice(Sandwich sandwich) {
+        Double basePrice = sandwich.getBasePrice();
+        if(basePrice != null) {
+            return basePrice + getIngredientsPrice(sandwich);
+        }
+        throw new RuntimeException("Base price is null");
     }
 
     public Double getIngredientsPrice(Sandwich sandwich) {
@@ -92,7 +100,7 @@ public class SandwichService {
                     .reduce(Double::sum)
                     .orElse(0.0);
         } else {
-            throw new RuntimeException();
+            throw new RuntimeException("Ingredients are null");
         }
     }
 }
