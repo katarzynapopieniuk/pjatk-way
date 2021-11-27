@@ -44,4 +44,55 @@ public class SandwichService {
         List<Integer> ids = List.of(1, 2, 3, 4, 5);
         return sandwichRepository.findAllById(ids);
     }
+
+    public Sandwich findById(Integer id) {
+        return sandwichRepository.findById(id).orElseThrow(RuntimeException::new);
+    }
+
+    public void addIngredient(Sandwich sandwich, Ingredient ingredient) {
+        if(sandwich.getIngredients() != null) {
+            sandwich.getIngredients().add(ingredient);
+        } else {
+            sandwich.setIngredients(List.of(ingredient));
+        }
+    }
+
+    public void setName(Sandwich sandwich, String name) {
+        if(sandwich.getName() != null) {
+            sandwich.setName(name);
+        }
+    }
+
+    public void setBiggerSize(Sandwich sandwich) {
+        Optional.ofNullable(sandwich.getSandwichSize())
+                .filter(size -> !size.equals(SandwichSize.BIG))
+                .map(SandwichSize::next)
+                .ifPresent(sandwich::setSandwichSize);
+    }
+
+    public void setSmallerSize(Sandwich sandwich) {
+        Optional.ofNullable(sandwich.getSandwichSize())
+                .filter(size -> !size.equals(SandwichSize.SMALL))
+                .map(SandwichSize::next)
+                .ifPresent(sandwich::setSandwichSize);
+    }
+
+    public void setNewPriceIfIsMoreExpensive(Sandwich sandwich, Double newPrice) {
+        Optional.ofNullable(sandwich.getBasePrice())
+                .filter(price -> price > newPrice)
+                .ifPresent(sandwich::setBasePrice);
+    }
+
+    public Double getIngredientsPrice(Sandwich sandwich) {
+        List<Ingredient> ingredients = sandwich.getIngredients();
+        if(ingredients != null) {
+            return ingredients.stream()
+                    .map(Ingredient::getPrice)
+                    .filter(Objects::nonNull)
+                    .reduce(Double::sum)
+                    .orElse(0.0);
+        } else {
+            throw new RuntimeException();
+        }
+    }
 }

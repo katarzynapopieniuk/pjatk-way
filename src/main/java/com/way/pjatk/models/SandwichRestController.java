@@ -1,9 +1,7 @@
 package com.way.pjatk.models;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -23,8 +21,8 @@ private final SandwichService sandwichService;
     }
 
     @GetMapping("/prepare")
-    public ResponseEntity<Sandwich> prepareSandwich() {
-        return ResponseEntity.ok(sandwichService.getSandwich("Red"));
+    public ResponseEntity<Sandwich> prepareSandwich(@RequestParam(required = false) String name) {
+        return ResponseEntity.ok(sandwichService.getSandwich(name));
     }
 
     @GetMapping("/addButter")
@@ -35,5 +33,10 @@ private final SandwichService sandwichService;
     @GetMapping("/topFiveSandwiches")
     public ResponseEntity<Collection<Sandwich>> getTopFiveSandwiches() {
         return ResponseEntity.ok(sandwichService.getTopFiveSandwiches());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Sandwich> getById(@PathVariable Integer id) {
+        return ResponseEntity.ok(sandwichService.findById(id));
     }
 }
