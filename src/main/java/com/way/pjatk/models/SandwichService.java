@@ -46,7 +46,8 @@ public class SandwichService {
     }
 
     public Sandwich findById(Integer id) {
-        return sandwichRepository.findById(id).orElseThrow(RuntimeException::new);
+        return sandwichRepository.findById(id)
+                .orElse(null);
     }
 
     public void addIngredient(Sandwich sandwich, Ingredient ingredient) {
@@ -102,5 +103,25 @@ public class SandwichService {
         } else {
             throw new RuntimeException("Ingredients are null");
         }
+    }
+
+    public List<Sandwich> findAll() {
+        return sandwichRepository.findAll();
+    }
+
+    public void delete(Sandwich sandwich) {
+        sandwichRepository.delete(sandwich);
+    }
+
+    public void deleteById(Integer id) {
+        sandwichRepository.deleteById(id);
+    }
+
+    public boolean exists(Sandwich sandwich) {
+        return sandwichRepository.existsById(sandwich.getId());
+    }
+
+    public boolean existsById(Integer id) {
+        return sandwichRepository.existsById(id);
     }
 }
