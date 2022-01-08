@@ -15,13 +15,18 @@ private final SandwichService sandwichService;
         this.sandwichService = sandwichService;
     }
 
+    @GetMapping
+    public ResponseEntity<String> helloWorld() {
+        return ResponseEntity.ok("Hello world");
+    }
+
     @GetMapping("/example")
     public ResponseEntity<Sandwich> getExampleSandwich() {
         return ResponseEntity.ok(sandwichService.getExampleSandwich());
     }
 
     @GetMapping("/prepare")
-    public ResponseEntity<Sandwich> prepareSandwich(@RequestParam(required = false) String name) {
+    public ResponseEntity<Sandwich> prepareSandwich(@RequestParam String name) {
         return ResponseEntity.ok(sandwichService.getSandwich(name));
     }
 
